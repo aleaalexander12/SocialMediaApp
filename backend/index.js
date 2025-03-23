@@ -7,6 +7,10 @@ import mongoose from "mongoose";
 
 // Routers
 import { healthRouter } from "./routes/health.js";
+import authRouter from "./routes/auth.js"; 
+import postRouter from "./routes/post.js";
+import userRouter from "./routes/user.js";
+
 
 const app = express();
 
@@ -42,6 +46,10 @@ app.get("/", (req, res) => {
 
 // API Routes
 app.use("/api/health", healthRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/posts", postRouter);
+app.use("/api/users", userRouter);
+
 
 // Global error handling
 app.use((err, req, res, next) => {
