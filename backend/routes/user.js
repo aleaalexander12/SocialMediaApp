@@ -103,4 +103,22 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// Update user
+router.patch("/:id", async (req, res) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
 export default router;
