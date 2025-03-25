@@ -1,12 +1,8 @@
 import express from "express";
 import User from "../models/user.js";
-import authMiddleware from "../middleware/authMiddleware.js";
+//import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
-
-
-
-
 
 // Create User
 router.post("/", async (req, res) => {
@@ -14,7 +10,6 @@ router.post("/", async (req, res) => {
     const user = new User(req.body);
     await user.save();
     res.status(201).json(user);
-  
   } catch (e) {
     console.error(e);
     res.status(400).json({ message: e.message });
@@ -24,20 +19,18 @@ router.post("/", async (req, res) => {
 // Get all users
 router.get("/", async (req, res) => {
   try {
-    const users = await User.find().select("-password"); // exclude passwords
+    const users = await User.find().select("-password");
     res.json(users);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
 });
 
-
-// Get user profile
-router.get("/:user", async (req, res) => {
+// Get single user profile
+router.get("/:id", async (req, res) => {
   try {
-    const user = await user.findById(req.params.id).select("-password");
+    const user = await User.findById(req.params.id).select("-password");
     if (!user) return res.status(404).json({ message: "User not found" });
-
     res.json(user);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
@@ -45,10 +38,10 @@ router.get("/:user", async (req, res) => {
 });
 
 // Follow a user
-router.post("/:id/follow", authMiddleware, async (req, res) => {
+router.post("/:id/follow", async (req, res) => {
   try {
-    const userToFollow = await user.findById(req.params.id);
-    const currentUser = await user.findById(req.user.id);
+    const userToFollow = await User.findById(req.params.id);
+    const currentUser = await User.findById(req.user.id);
 
     if (!userToFollow || !currentUser)
       return res.status(404).json({ message: "User not found" });
@@ -67,10 +60,10 @@ router.post("/:id/follow", authMiddleware, async (req, res) => {
 });
 
 // Unfollow a user
-router.post("/:id/unfollow", authMiddleware, async (req, res) => {
+router.post("/:id/unfollow", async (req, res) => {
   try {
-    const userToUnfollow = await user.findById(req.params.id);
-    const currentUser = await user.findById(req.user.id);
+    const userToUnfollow = await User.findById(req.params.id);
+    const currentUser = await User.findById(req.user.id);
 
     if (!userToUnfollow || !currentUser)
       return res.status(404).json({ message: "User not found" });
@@ -86,6 +79,25 @@ router.post("/:id/unfollow", authMiddleware, async (req, res) => {
     await userToUnfollow.save();
 
     res.json({ message: "User unfollowed" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// ✅ Delete a user
+router.delete("/:id", async (req, res) => {
+  try {
+    // Optional: Only allow deleting your own account
+    // if (req.user.id !== req.params.id) {
+    //   return res.status(403).json({ message: "You can only delete your own account." });
+    // }
+
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
+    if (!deletedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: "User deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }

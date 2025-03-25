@@ -1,12 +1,12 @@
 import express from "express";
 import User from "../models/user.js";
 import Post from "../models/post.js"; // ✅ You forgot to import the Post model
-import authMiddleware from "../middleware/authMiddleware.js";
+//import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
 // ✅ Create a post
-router.post("/", authMiddleware, async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         const { caption, imageUrl } = req.body;
         const newPost = new Post({
@@ -37,7 +37,7 @@ router.get("/", async (req, res) => {
 });
 
 // ✅ Like/unlike a post
-router.post("/:id/like", authMiddleware, async (req, res) => {
+router.post("/:id/like", async (req, res) => {
     try {
         const foundPost = await Post.findById(req.params.id); // ✅ Changed variable name to avoid shadowing
         if (!foundPost) {
@@ -64,7 +64,7 @@ router.post("/:id/like", authMiddleware, async (req, res) => {
 });
 
 // ✅ Comment on a post
-router.post("/:id/comment", authMiddleware, async (req, res) => {
+router.post("/:id/comment", async (req, res) => {
     try {
         const { text } = req.body;
         const foundPost = await Post.findById(req.params.id);
