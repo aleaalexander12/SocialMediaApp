@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose"
 
-const PostSchema = new mongoose.Schema({
+const postSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     imageUrl: { type: String, required: true },
     caption: { type: String },
@@ -12,6 +12,6 @@ const PostSchema = new mongoose.Schema({
             createdAt: { type: Date, default: Date.now }
         }
     ]
-}, { timestamps: true });
+}, { timestamps: true });  
 
-module.exports = mongoose.model("Post", PostSchema);
+export default mongoose.model("Post", postSchema);

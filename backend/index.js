@@ -47,8 +47,8 @@ app.get("/", (req, res) => {
 // API Routes
 app.use("/api/health", healthRouter);
 app.use("/api/auth", authRouter);
-app.use("/api/posts", postRouter);
-app.use("/api/users", userRouter);
+app.use("/api/post", postRouter);
+app.use("/api/user", userRouter);
 
 
 // Global error handling
@@ -57,4 +57,4 @@ app.use((err, req, res, next) => {
   res.status(500).send("Seems like we messed up somewhere...");
 });
 
-app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
+app.listen(PORT, () => console.log(`Server is running on port:  ${PORT}`));
