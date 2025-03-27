@@ -7,9 +7,14 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loading, error } = useSelector((state) => state.auth);
-  const [formData, setFormData] = useState({ username: "", email: "", password: "" });
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,42 +25,66 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4 text-center">Create your Creatify Account</h2>
-      {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          className="w-full border p-2 rounded mb-3"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          className="w-full border p-2 rounded mb-3"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          className="w-full border p-2 rounded mb-3"
-          onChange={handleChange}
-          required
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          className="bg-purple-600 text-white w-full p-2 rounded hover:bg-purple-700"
-        >
-          {loading ? "Registering..." : "Register"}
-        </button>
-      </form>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+      <div className="w-full max-w-md bg-white p-8 shadow-xl rounded-2xl">
+        <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
+          Join <span className="text-purple-600">Creatify</span>
+        </h2>
+        {error && (
+          <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
+        )}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label className="block text-sm text-gray-600 mb-1">Username</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="johndoe"
+              className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-purple-500 transition"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-gray-600 mb-1">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-purple-500 transition"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-gray-600 mb-1">Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="••••••••"
+              className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-purple-500 transition"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition font-medium"
+          >
+            {loading ? "Signing up..." : "Register"}
+          </button>
+        </form>
+        <p className="text-sm text-center text-gray-500 mt-6">
+          Already have an account?{" "}
+          <span
+            className="text-purple-600 hover:underline cursor-pointer"
+            onClick={() => navigate("/login")}
+          >
+            Log in
+          </span>
+        </p>
+      </div>
     </div>
   );
 };
