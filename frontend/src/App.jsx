@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import CreatePost from "./pages/CreatePost";
+import Comments from "./pages/Comment"; // ✅ Add this line!
 import Layout from "./components/Layout";
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/" element={<Layout><Home /></Layout>} />
         <Route path="/profile/:id" element={<Layout><Profile /></Layout>} />
         <Route path="/create" element={<Layout><CreatePost /></Layout>} />
+        <Route path="/comments/:postId" element={<Layout><Comments /></Layout>} />
 
         {/* Login & Register don't use the main layout */}
         <Route path="/login" element={<Login />} />
