@@ -9,12 +9,13 @@ const Login = () => {
   const { loading, error } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({ email: "", password: "" });
 
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await dispatch(loginUser(formData));
-    if (result.meta.requestStatus === "fulfilled") {
+    if (result.type === "auth/login/fulfilled") {
       navigate("/");
     }
   };
@@ -60,7 +61,7 @@ const Login = () => {
           </button>
         </form>
         <p className="text-sm text-center text-gray-500 mt-6">
-          Don’t have an account?{" "}
+          Dont have an account?{" "}
           <span
             className="text-purple-600 hover:underline cursor-pointer"
             onClick={() => navigate("/register")}
@@ -71,7 +72,6 @@ const Login = () => {
       </div>
     </div>
   );
-  
 };
 
 export default Login;
