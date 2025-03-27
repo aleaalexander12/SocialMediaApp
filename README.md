@@ -1,38 +1,38 @@
-# 🌟 Creatify - Social Media App
+# Creatify - Social Media App
 
-Creatify is a full-stack social media web application inspired by Instagram — but enhanced with a modern UI and personalized creative experience. Users can share images, like posts, comment, follow others, and more.
+Creatify is a full-stack social media web application — but enhanced with a modern UI and personalized creative experience. Users can share images, like posts, comment, follow others, and more.
 
-## 🧠 Features
+## Features
 
-- 🏠 Home Feed with Posts
-- 📸 Create & Upload Posts
-- ❤️ Like Toggle (Heart Animation)
-- 💬 Comment System (Add/Edit/Delete)
-- 🙋‍♂️ Follow/Unfollow Users
-- 🧑‍💼 Profile Page with Posts & Bio
-- 📱 Responsive Design (Desktop-first, optimized for mobile later)
-- 🔁 Real-time feel with smooth UX
+-  Home Feed with Posts
+-  Create & Upload Posts
+-  Like Toggle (Heart Animation)
+-  Comment System (Add/Edit/Delete)
+-  Follow/Unfollow Users
+-  Edit/Delete/Update Captions
+-  Profile Page with Posts & Bio
+-  Responsive Design (Desktop-first, optimized for mobile later)
+-  Real-time feel with smooth UX
 
 ---
 
-## 📦 Tech Stack
+## Tech Stack
 
-### 🖥 Frontend
+###  Frontend
 - React.js + React Router
 - Redux Toolkit (Global State)
 - Tailwind CSS (Styling)
 - Axios (API requests)
 - Lucide Icons (UI Icons)
 
-### ⚙️ Backend
+###  Backend
 - Node.js + Express.js
 - MongoDB (Mongoose)
-- JWT Authentication
 - Firebase (Image Upload)
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
