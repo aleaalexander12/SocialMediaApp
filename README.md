@@ -1,6 +1,6 @@
 # Creatify - Social Media App
 
-Creatify is a full-stack social media web application — but enhanced with a modern UI and personalized creative experience. Users can share images, like posts, comment, follow others, and more.
+Creatify is a full-stack social media web application — enhanced with a modern UI and personalized creative experience. Users can share images, like posts, comment, follow others, and more.
 
 ## Features
 
