@@ -1,58 +1,44 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
+import Sidebar from "../components/Sidebar";
+import ProfileHeader from "../components/ProfileHeader";
+import PostCard from "../components/PostCard";
+
+const dummyUser = {
+  avatar: "https://i.pravatar.cc/100?img=5",
+  username: "creativequeen",
+  bio: "I make art to make the world softer. 💜",
+  followers: 1200,
+  following: 340,
+};
+
+const dummyPost = {
+  _id: "1",
+  userAvatar: dummyUser.avatar,
+  username: dummyUser.username,
+  image: "https://source.unsplash.com/random/500x500?art",
+  caption: "A beautiful day to create 🎨",
+  likes: 123,
+  comments: 10,
+};
 
 const Profile = () => {
-  const { id } = useParams(); // username or userId
-  const [user, setUser] = useState(null);
-  const [posts, setPosts] = useState([]);
-
-  // Mock data for now – replace with real backend fetch
-  useEffect(() => {
-    setUser({
-      id: 1,
-      username: "creativequeen",
-      bio: "Passionate designer & artist 🎨✨",
-      avatar: "https://i.pravatar.cc/150?img=1",
-    });
-
-    setPosts([
-      { id: 1, image: "https://source.unsplash.com/random/400x400?art" },
-      { id: 2, image: "https://source.unsplash.com/random/400x400?fashion" },
-      { id: 3, image: "https://source.unsplash.com/random/400x400?design" },
-    ]);
-  }, [id]);
-
-  if (!user) return <div className="text-center mt-10">Loading...</div>;
-
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
-      <div className="flex items-center gap-6 mb-10">
-        <img
-          src={user.avatar}
-          alt="Avatar"
-          className="w-24 h-24 rounded-full object-cover"
-        />
-        <div>
-          <h2 className="text-2xl font-semibold text-gray-800">
-            {user.username}
-          </h2>
-          <p className="text-sm text-gray-600 mt-1">{user.bio}</p>
-        </div>
+    <div className="flex min-h-screen bg-gray-50">
+      {/* Sidebar */}
+      <div className="w-64 hidden md:block border-r bg-white">
+        <Sidebar />
       </div>
 
-      <h3 className="text-xl font-semibold text-gray-700 mb-4">
-        Posts by {user.username}
-      </h3>
+      {/* Main Content */}
+      <div className="flex-1 p-6">
+        <ProfileHeader user={dummyUser} />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {posts.map((post) => (
-          <img
-            key={post.id}
-            src={post.image}
-            alt="Post"
-            className="w-full h-60 object-cover rounded-lg"
-          />
-        ))}
+        {/* Posts */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+          <PostCard post={dummyPost} />
+          <PostCard post={dummyPost} />
+          <PostCard post={dummyPost} />
+        </div>
       </div>
     </div>
   );

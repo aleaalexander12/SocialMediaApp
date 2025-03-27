@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <aside className="hidden md:block w-64 p-4 bg-white shadow-lg h-screen fixed">
-      <div className="text-xl font-bold text-purple-600 mb-6">Creatify</div>
-      <nav className="space-y-4">
-        <Link to="/" className="block text-gray-700 hover:text-purple-600">Home</Link>
-        <Link to="/create" className="block text-gray-700 hover:text-purple-600">Create Post</Link>
-        <Link to="/profile/1" className="block text-gray-700 hover:text-purple-600">My Profile</Link>
+    <div className="bg-white rounded-2xl shadow-lg p-6 space-y-6">
+      <h2 className="text-xl font-semibold text-gray-700 mb-2">Navigation</h2>
+      <nav className="flex flex-col space-y-3">
+        <Link to="/" className="hover:text-purple-600 font-medium transition-colors">🏠 Home</Link>
+        <Link to="/create" className="hover:text-purple-600 font-medium transition-colors">📸 Create Post</Link>
+        <Link to="/profile/1" className="hover:text-purple-600 font-medium transition-colors">👤 My Profile</Link>
+        <Link to="/login" className="hover:text-purple-600 font-medium transition-colors">🔐 Login</Link>
+        <Link to="/register" className="hover:text-purple-600 font-medium transition-colors">✍️ Register</Link>
       </nav>
-    </aside>
+    </div>
   );
 };
 

@@ -5,21 +5,20 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import CreatePost from "./pages/CreatePost";
-import Navbar from "./components/Navbar";
+import Layout from "./components/Layout";
 
 const App = () => {
   return (
     <Router>
-      <Navbar /> {/* Persistent navigation across pages */}
-      <div className="container mx-auto mt-4 px-4">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile/:id" element={<Profile />} />
-          <Route path="/create" element={<CreatePost />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/profile/:id" element={<Layout><Profile /></Layout>} />
+        <Route path="/create" element={<Layout><CreatePost /></Layout>} />
+
+        {/* Login & Register don't use the main layout */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
     </Router>
   );
 };

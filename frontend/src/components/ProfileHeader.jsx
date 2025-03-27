@@ -1,19 +1,19 @@
 import React from "react";
-import FollowButton from "./FollowButton";
 
 const ProfileHeader = ({ user }) => {
   return (
-    <div className="flex items-center gap-6 mb-8">
+    <div className="flex items-center gap-6">
       <img
         src={user.avatar}
-        alt="Avatar"
-        className="w-24 h-24 rounded-full object-cover"
+        alt="avatar"
+        className="w-20 h-20 rounded-full object-cover border"
       />
       <div>
-        <h2 className="text-2xl font-semibold text-gray-800">{user.username}</h2>
-        <p className="text-sm text-gray-600 mt-1">{user.bio}</p>
-        <div className="mt-2">
-          <FollowButton />
+        <h2 className="text-xl font-bold">{user.username}</h2>
+        <p className="text-gray-600">{user.bio}</p>
+        <div className="flex gap-4 mt-2 text-sm text-gray-700">
+          <span>{user.followers} Followers</span>
+          <span>{user.following} Following</span>
         </div>
       </div>
     </div>
