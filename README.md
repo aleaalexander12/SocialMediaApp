@@ -4,15 +4,15 @@ Creatify is a full-stack social media web application — built for creators and
 
 ## ✨ Features
 
-- 🏠 Home Feed – Scroll through all posts from users.
-- 🖼️ Create & Upload Posts – Share your creativity with captions and images.
-- ❤️ Like Posts – Includes toggle with heart animation.
-- 💬 Comment System – Add, edit, and delete comments.
-- ➕ Follow/Unfollow – Build and grow your audience.
-- ✏️ Edit Captions – Update or delete your own post captions.
-- 👤 Profile Page – View user details, avatar, bio, and their posts.
-- 📱 Responsive Design – Optimized for desktop-first; mobile ready.
-- ⚡ Smooth UX – Fast transitions and interactive feedback.
+- 🏠 **Home Feed** – Scroll through all posts from users.
+- 🖼️ **Create & Upload Posts** – Share your creativity with captions and images.
+- ❤️ **Like Posts** – Includes toggle with heart animation.
+- 💬 **Comment System** – Add, edit, and delete comments.
+- ➕ **Follow/Unfollow** – Build and grow your audience.
+- ✏️ **Edit Captions** – Update or delete your own post captions.
+- 👤 **Profile Page** – View user details, avatar, bio, and their posts.
+- 📱 **Responsive Design** – Optimized for desktop-first; mobile ready.
+- ⚡ **Smooth UX** – Fast transitions and interactive feedback.
 
 ## 🛠️ Tech Stack
 
